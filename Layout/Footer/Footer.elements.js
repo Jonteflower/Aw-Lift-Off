@@ -14,7 +14,7 @@ export const FooterContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   z-index: 10;
-  height: 50px;
+  height: 30px;
   gap: 15px;
 
   @media screen and (max-width: 1000px) {

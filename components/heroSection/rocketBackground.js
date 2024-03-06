@@ -18,7 +18,7 @@ const starsAnimation = keyframes`
 const Space = styled.section`
   position: absolute;
   display: block;
-  height: calc(100vh + 50px);
+  height: calc(100vh + 70px);
   width: 100%;
   background-color: #1B2735;
   background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
@@ -129,13 +129,14 @@ const Body = styled.div`
   border-bottom: 3px solid #a81237;
   border-top: 3px solid #a81237;
 
+
   &:after {
     content: '';
     position: absolute;
     top: 0;
     right: 0;
     width: 25px;
-    height: 120px;
+    height: 115px;
     background: #e0e0e0;
   }
 

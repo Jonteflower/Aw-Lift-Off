@@ -17,13 +17,11 @@ export const OuterSection = styled.section`
   height: fit-content;
   gap: 45px;
   max-width: 1400px;
-  margin-bottom:10vh;
 
   @media screen and (max-width:1410px) {
       //box-sizing: border-box;
       gap: 30px;
       width: 90vw;
-      margin-bottom:2rem;
 
   }
 `;

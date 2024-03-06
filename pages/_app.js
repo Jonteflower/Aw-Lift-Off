@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React, { useEffect } from 'react';
-import DiamondLoader from "../components/utils/diamondLoader";
+import CircleLoader from "../components/utils/circleLoader";
 import '../styles/globals.scss';
 import '../styles/rocket.scss';
 
@@ -23,7 +23,7 @@ export default function MyApp({ Component, pageProps }) {
 
     }
   }
-
+  
   useEffect(() => {
     if (typeof window !== 'undefined') {
       stopLoading();
@@ -41,7 +41,7 @@ export default function MyApp({ Component, pageProps }) {
         <meta name="theme-color" content="#11041D" ></meta>
       </Head>
       <div id='globalLoader'>
-        <DiamondLoader />
+        <CircleLoader />
       </div>
       {getLayout(<Component {...pageProps} />)}
     </>
