@@ -6,9 +6,8 @@ body {
   font-display: swap;
   padding: 0;
   margin: 0;
-  //background: #d3efda;
+
   scroll-behavior: auto;
-  //color:#8f5b35;
   overflow: overlay;
   font-style: normal;
   min-height: 100%;
@@ -52,8 +51,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #d3efda;
-  z-index: 9999; 
+  background-color: #08080e;
+  z-index: 999999; 
 }
 
 .fade-out {

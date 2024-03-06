@@ -1,47 +1,76 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
-// Keyframes for spinning animation
-const spin = keyframes`
-  to {
-    transform: rotate(360deg);
+// Define our keyframes for the pulsing rings
+const pulse = keyframes`
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
   }
 `;
 
-// Styled component for the loader
+const pulseDelay = keyframes`
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+`;
+
+// Create a Loader styled component
 const Loader = styled.div`
   position: relative;
-  width: 50px;  // Adjust size as needed
-  height: 50px; // Adjust size as needed
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
-  border-top-color: #64FFDA;  // Use your preferred color or the imported neonGreen
-  animation: ${spin} 1s linear infinite;
+  height: 32px;
+  width: 32px;
 `;
 
-// InnerText styles remain mostly the same, just remove the rotation
-const InnerText = styled.span`
+// Create a Ring styled component for the pulsing effect
+const Ring = styled.span`
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #ffffff;
-  font-weight: 500;
-  font-size: 1.5rem;  // Adjust size as needed
-  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  height: 32px;
+  width: 32px;
+  border: 2px solid #FFF;
+  border-radius: 50%;
+  opacity: 0;
+  animation: ${pulse} 1.5s cubic-bezier(0.075, 0.820, 0.165, 1.000) infinite;
+
+  // Define a pseudo-element for the delayed pulse
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height: 32px;
+    width: 32px;
+    border: 2px solid #FFF;
+    border-radius: 50%;
+    opacity: 0;
+    animation: ${pulseDelay} 1.5s cubic-bezier(0.075, 0.820, 0.165, 1.000) 0.25s infinite;
+  }
 `;
 
-// CircularLoader component
+// Loader6 React component
 const CircleLoader = () => {
   return (
-    <>
-      <Loader>
-        <InnerText>
-            AW
-        </InnerText>
-      </Loader>
-    </>
+    <Loader className="loader-6">
+      <Ring />
+    </Loader>
   );
-}
+};
 
 export default CircleLoader;
