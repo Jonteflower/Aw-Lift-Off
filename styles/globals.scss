@@ -1,0 +1,155 @@
+html,
+body {
+  position: relative;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;  
+  font-display: swap;
+  padding: 0;
+  margin: 0;
+  //background: #d3efda;
+  scroll-behavior: auto;
+  //color:#8f5b35;
+  overflow: overlay;
+  font-style: normal;
+  min-height: 100%;
+
+  ::-webkit-scrollbar {
+      height: 4px;
+      width: 0px;
+      background: #00000000;
+  }
+
+    ::-webkit-scrollbar-thumb {
+        background: #ffffff99;
+        -webkit-border-radius: 1ex;
+        border-radius: 1ex;
+        -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+    }
+
+    ::-webkit-scrollbar-corner {
+        background: #00000000;
+    }
+
+  @media screen and (max-width: 768px){
+    ::-webkit-scrollbar {
+        -webkit-appearance: none;
+    }
+  }
+
+}
+
+:root {
+  --swiper-theme-color:red;
+}
+
+#globalLoader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #11041D;
+  z-index: 9999; 
+}
+
+.fade-out {
+  animation: fadeOut 0.8s forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  align-items:center;
+  width: 100%;
+  min-height: 100vh;
+  height: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 0;
+  background: #08080e00;
+  color: #f1f1f1;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    //color: white;
+    background: transparent;
+  }
+}
+
+//Swiper 
+.swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  @media (max-width: 400px)  {
+    height: 300px;
+}
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: contain;
+  width: 100%;
+  
+}
+
+.swiper-slide-active {
+  opacity: 1;
+  z-index: 1;
+}
+
+//Swiper 
+.swiperCarousell {
+  @media (max-width: 400px)  {
+    height: 150px;
+}}
+
+.swiper-pagination-bullet {
+  width: 6px;
+  background: transparent;
+  border: 1px solid #ffffff;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  width: 20px;
+  height: 6px;
+  transition: width 0.5s;
+  border-radius: 5px;
+  background: #ff4d5a !important;
+  border: 1px solid transparent;
+  
+}
