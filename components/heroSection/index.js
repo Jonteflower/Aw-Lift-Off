@@ -112,10 +112,10 @@ function HeroSection({ }) {
         if(days == 0 && hours <= 10){
           setFireScale(1 / hours);
           if(days == 0 && hours < 1){
-            setFireScale(round(1 + 1/minutes));
+            setFireScale(round(1 + 0.5/minutes));
           }
           if(days == 0 && hours == 0 && seconds <= 11){
-            setFireScale(round(1 / hours + 1/minutes + 1/seconds));
+            setFireScale(round( 1 + 1/seconds));
           }
         }else {
           setFireScale(0.15);
