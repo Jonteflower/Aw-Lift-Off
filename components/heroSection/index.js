@@ -72,6 +72,9 @@ function HeroSection({ }) {
     setTopDistance(-12 / Math.sqrt(fireScale) + fireScale * 14);
   }, [fireScale]);
 
+  function round(number){
+    return Math.round(number*100)/100
+  } 
 
   useEffect(() => {
     const calculateScaleAndCountdown = () => {
@@ -105,8 +108,20 @@ function HeroSection({ }) {
         setFireScale(1.1);
       } else {
         // Update scale based on the remaining time
-        const scaleAdjustment = days > 0 ? 0.1 : hours <= 10 ? 1 / hours : 0.15;
-        setFireScale(scaleAdjustment);
+        //const scaleAdjustment = days > 0 ? 0.15 : hours <= 10 ? 1 / hours : 0.15;
+        if(days == 0 && hours <= 10){
+          setFireScale(1 / hours);
+          if(hours <= 1){
+            setFireScale(round(1 / hours + 1/minutes));
+          }
+          if(seconds <= 11){
+            setFireScale(round(1 / hours + 1/minutes + 1/seconds));
+          }
+        }else {
+          setFireScale(0.15);
+        }
+
+        console.log(fireScale)
 
         // Update countdown text
         let countdownText = `${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds`;

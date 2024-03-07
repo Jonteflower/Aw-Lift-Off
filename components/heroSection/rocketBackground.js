@@ -1,6 +1,7 @@
 // Import necessary modules from React and styled-components
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
+import StarryBackground from './stars'; // Adjust the import path as necessary
 
 // Define animations
 const fireAnimation = keyframes`
@@ -173,7 +174,7 @@ const Fire = styled.div`
   border-bottom-left-radius: 50%;
   animation: ${fireAnimation} 0.2s infinite;
   transform: scale(${props => props.scale || 1});
-  top:  ${props =>`${props.topDistance}px`|| 0};
+  top:  ${props => `${props.topDistance}px` || 0};
 
   div {
     position: absolute;
@@ -201,7 +202,7 @@ const Spark = styled.div`
   &.spark6 { animation: ${sparkAnimation({ startWidth: 3, startHeight: 3, endWidth: 10, endHeight: 10 })} 0.2s infinite; }
   transform: scale(${props => props.scale || 1});
   bottom: -${props => props.scale * 70}px; // Adjust the bottom position based on the scale
-  //top: ${props =>`${props.topDistance}px`|| 0};
+  //top: ${props => `${props.topDistance}px` || 0};
 `;
 
 const Fin = styled.div`
@@ -241,8 +242,9 @@ const Fin = styled.div`
 `;
 
 
+
 // Next.js component
-export default function RocketBackground({ fireScale, topDistance, starsDuration}) {
+export default function RocketBackground({ fireScale, topDistance, starsDuration }) {
 
   return (
     <Space>
@@ -260,12 +262,12 @@ export default function RocketBackground({ fireScale, topDistance, starsDuration
           <Body />
           <Reactor />
           <Fire scale={fireScale} topDistance={topDistance}>
-            <Spark className="spark1" scale={fireScale} topDistance={topDistance + 40*fireScale}/>
-            <Spark className="spark2" scale={fireScale} topDistance={topDistance + 40*fireScale}/>
-            <Spark className="spark3" scale={fireScale} topDistance={topDistance + 40*fireScale}/>
-            <Spark className="spark4" scale={fireScale} topDistance={topDistance + 40*fireScale}/>
-            <Spark className="spark5" scale={fireScale} topDistance={topDistance + 40*fireScale}/>
-            <Spark className="spark6" scale={fireScale} topDistance={topDistance + 40*fireScale}/>
+            <Spark className="spark1" scale={fireScale} topDistance={topDistance + 40 * fireScale} />
+            <Spark className="spark2" scale={fireScale} topDistance={topDistance + 40 * fireScale} />
+            <Spark className="spark3" scale={fireScale} topDistance={topDistance + 40 * fireScale} />
+            <Spark className="spark4" scale={fireScale} topDistance={topDistance + 40 * fireScale} />
+            <Spark className="spark5" scale={fireScale} topDistance={topDistance + 40 * fireScale} />
+            <Spark className="spark6" scale={fireScale} topDistance={topDistance + 40 * fireScale} />
           </Fire>
         </Fuselage>
         <Fin className="left-fin" />

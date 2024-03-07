@@ -34,10 +34,10 @@ export default function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <title>AW Lift-Off</title>
-        <meta name="description" content="Euro Jackpot Number generator based on previous drawings" />
+        <meta name="description" content="After work countdown to LIFT-OFF" />
         <link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico" />
-        <link rel="apple-touch-icon" type="image/png" href="appleIcon.png" />
-        <meta name='Euro hackpot' content='Euro hackpot number generator'></meta>
+        <link rel="apple-touch-icon" type="image/png" href="appleIcon.jpg" />
+        <meta name='AW Lift-Off' content='Afterwork lift-off'></meta>
         <meta name="theme-color" content="#11041D" ></meta>
       </Head>
       <div id='globalLoader'>
