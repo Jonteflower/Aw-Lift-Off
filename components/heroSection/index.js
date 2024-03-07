@@ -111,17 +111,17 @@ function HeroSection({ }) {
         //const scaleAdjustment = days > 0 ? 0.15 : hours <= 10 ? 1 / hours : 0.15;
         if(days == 0 && hours <= 10){
           setFireScale(1 / hours);
-          if(hours <= 1){
+          if(days == 0 && hours <= 1){
             setFireScale(round(1 / hours + 1/minutes));
           }
-          if(seconds <= 11){
+          if(days == 0 && hours == 0 && seconds <= 11){
             setFireScale(round(1 / hours + 1/minutes + 1/seconds));
           }
         }else {
           setFireScale(0.15);
         }
 
-        console.log(fireScale)
+        //console.log(fireScale)
 
         // Update countdown text
         let countdownText = `${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds`;
