@@ -66,15 +66,9 @@ function HeroSection({ }) {
     setTopDistance(-12 / Math.sqrt(fireScale) + fireScale * 14)
   }, [fireScale]);
 
-  // Adjusting stars speed based on fire scale
-  useEffect(() => {
-    setStarsDuration(8 / fireScale); // Slower when the scale is lower
-    setTopDistance(-12 / Math.sqrt(fireScale) + fireScale * 14);
-  }, [fireScale]);
-
-  function round(number){
-    return Math.round(number*100)/100
-  } 
+  function round(number) {
+    return Math.round(number * 100) / 100
+  }
 
   useEffect(() => {
     const calculateScaleAndCountdown = () => {
@@ -82,66 +76,66 @@ function HeroSection({ }) {
       const nextThursday = new Date(now);
       nextThursday.setHours(16, 0, 0, 0); // Set to 16:00
 
+      // Adjusting for the next occurrence of Thursday at 16:00
       if (now.getDay() > 4 || (now.getDay() === 4 && now.getHours() >= 16)) {
-        // Set to next Thursday if today is past Thursday 16:00
         nextThursday.setDate(now.getDate() + ((11 - now.getDay()) % 7));
-      } else if (now.getDay() === 4 && now.getHours() < 16) {
-        // Keep today's date if it's Thursday before 16:00
-        nextThursday.setDate(now.getDate());
-      } else {
-        // Otherwise, set to the coming Thursday
+      } else if (now.getDay() < 4) {
         nextThursday.setDate(now.getDate() + ((4 - now.getDay()) % 7));
       }
 
-      // Adjust for Swedish time zone
-      nextThursday.setHours(nextThursday.getHours() + (nextThursday.getTimezoneOffset() / 60) + 1);
-      const diff = nextThursday - now; // Difference in milliseconds
-
+      // Time difference calculation
+      const diff = nextThursday.getTime() - now.getTime();
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
 
-      if (now.getDay() === 4 && now.getHours() >= 16 && now.getHours() < 24) {
-        // It's between Thursday 16:00 and 24:00
-        setCountdown("LIFT-OFF");
-        setFireScale(1.1);
-      } else {
-        // Update scale based on the remaining time
-        //const scaleAdjustment = days > 0 ? 0.15 : hours <= 10 ? 1 / hours : 0.15;
-        if(days == 0 && hours <= 10){
-          setFireScale(1 / hours);
-          if(days == 0 && hours < 1){
-            setFireScale(round(1 + 0.5/minutes));
-          }
-          if(days == 0 && hours == 0 && seconds <= 11){
-            setFireScale(round( 1 + 1/seconds));
-          }
-        }else {
-          setFireScale(0.15);
+      // Fire scale and countdown logic
+      let newFireScale = 0.15;
+      if (days === 0 && hours <= 10) {
+        if (hours < 1) {
+          const minuteNotNull = Math.max(1, minutes)
+          newFireScale = round(1 + 0.5 / minuteNotNull);
+        } else {
+          newFireScale = 1 / hours;
         }
+        if (hours === 0 && minutes === 0 && seconds <= 10) {
+          const secondsNotNull = Math.max(1, seconds)
+          newFireScale = round(1 + 1 / secondsNotNull);
+        }
+      }
 
-       //console.log(fireScale)
+      setFireScale(newFireScale);
+      setStarsDuration(8 / newFireScale); // Slower when the scale is lower
+      setTopDistance(-12 / Math.sqrt(newFireScale) + newFireScale * 14);
 
-        // Update countdown text
-        let countdownText = `${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds`;
+      // Countdown text update
+      let countdownText = "LIFT-OFF";
+      if (days > 0 || hours > 0 || minutes > 0 || seconds > 0) {
+        countdownText = `${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds`;
         if (days > 0) {
           countdownText = `${days} Days`;
         } else if (hours > 0) {
           countdownText = `${hours} Hours`;
-        }  else if (minutes > 0) {
+        } else if (minutes > 0) {
           countdownText = `${minutes} Minutes`;
-        } else {
+        } else if (seconds > 0) {
           countdownText = `${seconds} Seconds`;
+        } else {
+          let countdownText = "LIFT-OFF"
         }
-        setCountdown(countdownText);
       }
+      setCountdown(countdownText);
     };
+
+    const round = (number) => Math.round(number * 100) / 100;
 
     calculateScaleAndCountdown();
     const timer = setInterval(calculateScaleAndCountdown, 1000);
+
     return () => clearInterval(timer);
   }, []);
+
 
   //console.log(fireScale, starsDuration)
   return (
