@@ -47,8 +47,8 @@ const HeroTitle = styled.h1`
   text-align: center;
 
   @media screen and (max-width:600px) {
-    font-size: 2.3rem;
-    line-height: 2.7rem;
+    font-size: 3.5rem;
+    line-height: 3.7rem;
     text-align: center;
     line-height: 130%;
   }
@@ -121,7 +121,7 @@ function HeroSection({ }) {
           setFireScale(0.15);
         }
 
-        //console.log(fireScale)
+        console.log(fireScale)
 
         // Update countdown text
         let countdownText = `${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds`;
