@@ -33,7 +33,7 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>AW Lift-Off</title>
+        <title>After Work</title>
         <meta name="description" content="After work countdown to LIFT-OFF" />
         <link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico" />
         <link rel="apple-touch-icon" type="image/png" href="appleIcon.jpg" />
