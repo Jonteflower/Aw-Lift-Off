@@ -26,6 +26,9 @@ const Space = styled.section`
   color: white;
   padding-top: 30vh;
   z-index: -1;
+  @media screen and (max-width:600px) {
+    padding-top: 20vh;
+  }
 `;
 
 const Stars = styled.div`
